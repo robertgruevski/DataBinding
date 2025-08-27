@@ -8,6 +8,15 @@
             <Entry x:Name="textAddScore" Placeholder="Enter test score" Keyboard="Numeric" WidthRequest="150"/>
             <Button x:Name="buttonAddScore" Text="Add" Clicked="buttonAddScore_Clicked"/>
         </HorizontalStackLayout>
+        <CollectionView x:Name="cvScores" SelectionMode="Single" ItemsSource="{Binding TestScores}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Center">
+                        <Label Text="{Binding .}" FontSize="20" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 
 </ContentPage>
