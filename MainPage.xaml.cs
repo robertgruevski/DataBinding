@@ -19,5 +19,10 @@ namespace DataBinding
 		{
 
         }
-    }
+
+		private void OnDeleteScore(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

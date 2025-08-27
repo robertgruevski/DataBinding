@@ -13,6 +13,12 @@
                 <DataTemplate>
                     <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Center">
                         <Label Text="{Binding .}" FontSize="20" VerticalOptions="Center"/>
+                        <Button Text="Delete" 
+                                Clicked="OnDeleteScore" 
+                                CommandParameter="{Binding .}"
+                                Background="Red"
+                                TextColor="White"
+                                WidthRequest="70"/>
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
