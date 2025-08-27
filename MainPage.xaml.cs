@@ -13,12 +13,21 @@ namespace DataBinding
             InitializeComponent();
             BindingContext = this; // Set the BindingContext to the Main Page instance to enable data binding
 								   // Sometimes you want to use a ViewModel instead
+								   // MVVM is a pattern where the model (data) is separated from the view (UI)
 		}
 
 		private void buttonAddScore_Clicked(object sender, EventArgs e)
 		{
-
-        }
+            if (int.TryParse(textAddScore.Text, out int newScore) && newScore >= 0 && newScore <= 100)
+            {
+                TestScores.Add(newScore);
+                textAddScore.Text = string.Empty;
+            }
+            else
+            {
+                DisplayAlert("Invalid Input", "Please enter a valid score between 0 and 100.", "OK");
+			}
+		}
 
 		private void OnDeleteScore(object sender, EventArgs e)
 		{
