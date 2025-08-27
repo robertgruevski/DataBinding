@@ -20,8 +20,8 @@ namespace DataBinding
 		{
             if (int.TryParse(textAddScore.Text, out int newScore) && newScore >= 0 && newScore <= 100)
             {
-                TestScores.Add(newScore);
-                textAddScore.Text = string.Empty;
+                TestScores.Add(newScore); // Will automatically updated the CollectionView due to data binding
+                textAddScore.Text = string.Empty; // Clear the input field after adding
             }
             else
             {
@@ -31,7 +31,14 @@ namespace DataBinding
 
 		private void OnDeleteScore(object sender, EventArgs e)
 		{
-
+            if(sender is Button button && button.BindingContext is int score)
+            {
+                TestScores.Remove(score); // Remove the score from the collection
+            }
+            else
+            {
+                DisplayAlert("Error", "Unable to delete score", "OK");
+            }
 		}
 	}
 }
