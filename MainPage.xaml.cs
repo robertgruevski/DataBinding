@@ -1,24 +1,23 @@
-﻿namespace DataBinding
+﻿using System.Collections.ObjectModel;
+
+namespace DataBinding
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        public ObservableCollection<int> TestScores { get; set; } = new ObservableCollection<int>
+        {
+            82,74,97,76,81,90
+        };
         public MainPage()
         {
             InitializeComponent();
-        }
+            BindingContext = this; // Set the BindingContext to the Main Page instance to enable data binding
+								   // Sometimes you want to use a ViewModel instead
+		}
 
-        private void OnCounterClicked(object? sender, EventArgs e)
-        {
-            count++;
+		private void buttonAddScore_Clicked(object sender, EventArgs e)
+		{
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
 }
